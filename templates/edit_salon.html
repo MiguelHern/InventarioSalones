@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<form action="/update_salon/{{ salon[0] }}" method="post" class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Editar Salón</h2>
+    
+    <input type="text" name="nombre" placeholder="Nombre del Salón" value="{{ salon[1] }}" class="border rounded p-2 mb-4 w-full" required>
+    <input type="number" name="capacidad" placeholder="Capacidad del Salón" value="{{ salon[2] }}" class="border rounded p-2 mb-4 w-full" required>
+    <label class="inline-flex items-center mr-4"></label>
+        <input type="number" name="sillas" placeholder="Número de Sillas" value="{{ salon[7] }}" class="border rounded p-2 mb-4 w-full" required>
+    </label>
+    <input type="text" name="piso" placeholder="Piso del Salón" value="{{ salon[11] }}" class="border rounded p-2 mb-4 w-full" required>
+    <label class="block mb-2">Recursos:</label>
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="ventilador" {% if salon[5] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Ventilador</span>
+    </label>
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="repetidor" {% if salon[6] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Repetidor</span>
+    </label>
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="proyector" {% if salon[4] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Proyector</span>
+    </label>
+    
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="escritorio" {% if salon[8] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Escritorio</span>
+    </label>
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="pantalla" {% if salon[9] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Pantalla</span>
+    </label>
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="pintarron" {% if salon[10] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Pintarrón</span>
+    </label>
+    
+
+    <label class="inline-flex items-center mr-4">
+        <input type="checkbox" name="luces" {% if salon[12] %} checked {% endif %} class="form-checkbox">
+        <span class="ml-2">Luces</span>
+    </label>
+    
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+        Guardar
+    </button>
+</form>
+
+{% endblock %}

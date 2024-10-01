@@ -1,0 +1,201 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="mb-4">
+            {% for message in messages %}
+                <div class="bg-green-500 text-white p-2 rounded mb-2">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
+
+    <form action="/add_salon" method="post" class="bg-white p-6 rounded-lg ">
+        <h2 class="text-2xl font-bold mb-4">Agregar Salón</h2>
+        
+        <input type="text" name="nombre" placeholder="Nombre del Salón" class="border rounded p-2 mb-4 w-full" required>
+        <input type="number" name="capacidad" placeholder="Capacidad del Salón" class="border rounded p-2 mb-4 w-full" required>
+        <label class="inline-flex items-center mb-2">
+            <input type="number" name="sillas" placeholder="Número de Sillas" class="border rounded p-2 w-full" required>
+        </label>
+        <input type="number" name="piso" placeholder="Piso del Salón" class="border rounded p-2 mb-4 w-full" required>
+        
+        <label class="block mb-2">Recursos:</label>
+        <div class="flex flex-col mb-4">
+            <label class="inline-flex items-center mb-2">
+                <input type="checkbox" name="ventilador" class="form-checkbox">
+                <span class="ml-2">Ventilador</span>
+            </label>
+            <label class="inline-flex items-center mb-2">
+                <input type="checkbox" name="repetidor" class="form-checkbox">
+                <span class="ml-2">Repetidor</span>
+            </label>
+            <label class="inline-flex items-center mb-2">
+                <input type="checkbox" name="proyector" class="form-checkbox">
+                <span class="ml-2">Proyector</span>
+            </label>
+            <label class="inline-flex items-center mb-2">
+                <input type="checkbox" name="escritorio" class="form-checkbox">
+                <span class="ml-2">Escritorio</span>
+            </label>
+            <label class="inline-flex items-center mb-2">
+                <input type="checkbox" name="pantalla" class="form-checkbox">
+                <span class="ml-2">Pantalla</span>
+            </label>
+            <label class="inline-flex items-center">
+                <input type="checkbox" name="pintarron" class="form-checkbox">
+                <span class="ml-2">Pintarrón</span>
+            </label>
+        </div>
+        
+        <label class="inline-flex items-center">
+            <input type="checkbox" name="luces" class="form-checkbox">
+            <span class="ml-2">Luces</span>
+        </label>
+        <div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+            Guardar
+        </button>
+    </div>
+    </form>
+</div>
+
+<table class="min-w-full mt-6 border-collapse border border-gray-300">
+    <thead>
+        <tr class="bg-gray-100">
+            <td class="border border-gray-300 p-2">Nombre del Salón</td>
+            <td class="border border-gray-300 p-2">Capacidad</td>
+            <td class="border border-gray-300 p-2">ID del Edificio</td>
+            <td class="border border-gray-300 p-2">Proyector</td>
+            <td class="border border-gray-300 p-2">Ventilador</td>
+            <td class="border border-gray-300 p-2">Repetidor</td>
+            <td class="border border-gray-300 p-2">Sillas</td>
+            <td class="border border-gray-300 p-2">Escritorio</td>
+            <td class="border border-gray-300 p-2">Pantalla</td>
+            <td class="border border-gray-300 p-2">Pintarrón</td>
+            <td class="border border-gray-300 p-2">Piso</td>
+            <td class="border border-gray-300 p-2">Luces</td>
+            <td class="border border-gray-300 p-2">Operaciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón A</td>
+            <td class="border border-gray-300 p-2">30</td>
+            <td class="border border-gray-300 p-2">101</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">25</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">1</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/1" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/1" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón B</td>
+            <td class="border border-gray-300 p-2">50</td>
+            <td class="border border-gray-300 p-2">102</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">40</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">2</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/2" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/2" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón C</td>
+            <td class="border border-gray-300 p-2">40</td>
+            <td class="border border-gray-300 p-2">103</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">30</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">3</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/3" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/3" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón D</td>
+            <td class="border border-gray-300 p-2">60</td>
+            <td class="border border-gray-300 p-2">104</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">50</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">1</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/4" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/4" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón E</td>
+            <td class="border border-gray-300 p-2">45</td>
+            <td class="border border-gray-300 p-2">105</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">35</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">2</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/5" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/5" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+            <td class="border border-gray-300 p-2">Salón F</td>
+            <td class="border border-gray-300 p-2">55</td>
+            <td class="border border-gray-300 p-2">106</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">45</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">No</td>
+            <td class="border border-gray-300 p-2">3</td>
+            <td class="border border-gray-300 p-2">Sí</td>
+            <td class="border border-gray-300 p-2">
+                <a href="/edit_salon/6" class="text-blue-500 hover:underline">Editar</a>
+                <a href="/delete_salon/6" class="text-red-500 hover:underline">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+{% endblock %}
